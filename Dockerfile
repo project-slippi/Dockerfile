@@ -4,6 +4,7 @@ RUN apt-get update
 RUN apt-get install -y golang
 RUN git clone https://github.com/JLaferri/gecko
 WORKDIR /gecko
+RUN git pull
 RUN go build .
 
 FROM devkitpro/toolchain-base
