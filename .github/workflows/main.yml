@@ -29,8 +29,8 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: |
-            nikhilnarayana/devkitpro-slippi:latest
             nikhilnarayana/devkitpro-slippi:${{github.ref_name}}
+            nikhilnarayana/devkitpro-slippi:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
       - name: Image digest
