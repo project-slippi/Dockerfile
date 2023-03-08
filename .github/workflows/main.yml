@@ -11,7 +11,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v2
@@ -35,24 +35,3 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-#       - name: Download latest Nintendont artifacts
-#         uses: dawidd6/action-download-artifact@v2
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           workflow: build.yml
-#           branch: slippi
-#           repo: project-slippi/Nintendont
-#       - name: Zip Release Artifact
-#         run: |
-#           mv release*/apps ./
-#           mv loader*/* ./
-#           zip -r "Slippi-Nintendont-${{ env.VERSION }}.zip" apps/
-#           rm -rf release* loader* apps/
-#       - name: Upload binaries to release
-#         uses: svenstaro/upload-release-action@v2
-#         with:
-#           repo_token: ${{ secrets.GITHUB_TOKEN }}
-#           file: ./*
-#           tag: ${{ github.ref }}
-#           overwrite: true
-#           file_glob: true
