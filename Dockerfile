@@ -11,8 +11,6 @@ FROM devkitpro/toolchain-base
 
 LABEL maintainer="Nikki <nikki@slippi.gg>"
 
-RUN ln -s /proc/mounts /etc/mtab
-
 RUN dkp-pacman -Syyu --noconfirm gamecube-dev wii-dev wiiu-dev gba-dev && \
   dkp-pacman -S --needed --noconfirm `dkp-pacman -Slq dkp-libs | grep '^ppc-'` && \
   dkp-pacman -Scc --noconfirm
