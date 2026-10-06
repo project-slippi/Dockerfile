@@ -9,7 +9,7 @@ RUN go build .
 
 FROM devkitpro/toolchain-base
 
-LABEL maintainer="Nikki <nikki@slippi.gg>"
+LABEL maintainer="nikki <nikki@slippi.gg>"
 
 RUN dkp-pacman -Syyu --noconfirm gamecube-dev wii-dev wiiu-dev gba-dev && \
   dkp-pacman -S --needed --noconfirm `dkp-pacman -Slq dkp-libs | grep '^ppc-'` && \
@@ -19,3 +19,6 @@ RUN apt-get install -y "g++-multilib"
 ENV DEVKITPPC=${DEVKITPRO}/devkitPPC
 ENV DEVKITARM=${DEVKITPRO}/devkitARM
 COPY --from=builder /gecko/gecko /usr/bin/
+
+# fix dubious ownership error
+RUN git config --global --add safe.directory /work
