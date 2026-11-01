@@ -30,7 +30,6 @@ jobs:
           push: true
           tags: |
             nikhilnarayana/devkitpro-slippi:${{github.ref_name}}
-            nikhilnarayana/devkitpro-slippi:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
       - name: Image digest
